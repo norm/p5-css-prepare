@@ -19,8 +19,23 @@ CSS
 
 $cp->from_string( $input );
 my $test = $cp->to_string();
+ok( $test eq $output, 'whitespace removed' );
 
-ok( $test eq $output, 'whitespace removal' );
+
+# comments are removed
+$input = <<CSS;
+    /* hello world */
+    div {
+        margin: 0;
+    }
+CSS
+$output = <<CSS;
+div{margin:0;}
+CSS
+
+$cp->from_string( $input );
+my $test = $cp->to_string();
+ok( $test eq $output, 'comments removed' );
 
 
 # zero units equals zero
@@ -35,7 +50,6 @@ CSS
 
 $cp->from_string( $input );
 $test = $cp->to_string();
-
 ok( $test eq $output, 'zero has no units' );
 
 
@@ -54,5 +68,4 @@ CSS
 
 $cp->from_string( $test );
 $test = $cp->to_string();
-
 ok( $test eq $output, 'last-rule-wins cascade' );
