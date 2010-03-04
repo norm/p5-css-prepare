@@ -60,9 +60,9 @@ sub split_into_declaration_blocks {
             (?<selector> .*? )
             \s*
             \{
-                (?<block> .* )
+                (?<block> [^\}]+ )
             \}
-        }x;
+        }sx;
     
     while ( $string =~ s{$splitter}{}sx ) {
         my %match = %+;
@@ -76,15 +76,13 @@ sub parse_selectors {
     my $string = shift;
     my @selectors;
     
-    say "SELECTOR\n$string\n";
-    
     my $splitter = qr{
             ^
             \s*
             ( [^,]+ )
             \s*
             \,?
-        }x;
+        }sx;
     
     while ( $string =~ s{$splitter}{}sx ) {
         push @selectors, $1;
@@ -105,7 +103,7 @@ sub parse_declaration_block {
             \s*
             (?<value> [^;]+ )
             \;?
-        }x;
+        }sx;
     
     while ( $string =~ s{$splitter}{}sx ) {
         my %match = %+;
