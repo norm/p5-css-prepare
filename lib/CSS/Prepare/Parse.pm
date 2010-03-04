@@ -2,6 +2,11 @@ package CSS::Prepare::Parse;
 
 use Modern::Perl;
 
+use CSS::Prepare::Property::Margin;
+use CSS::Prepare::Property::Padding;
+
+my @PROPERTIES = qw( Margin Padding );
+
 
 
 sub parse {
@@ -16,9 +21,6 @@ sub parse {
             = split_into_declaration_blocks( $media_block );
         
         foreach my $block ( @declaration_blocks ) {
-            use Data::Dumper::Concise;
-            print Dumper $block;
-            
             # replace the string with a data
             # structure of selectors
             $block->{'selector'} = parse_selectors( $block->{'selector'} );
@@ -93,7 +95,7 @@ sub parse_selectors {
 
 sub parse_declaration_block {
     my $string = shift;
-    my @declarations;
+    my %canonical;
     
     my $splitter = qr{
             ^
@@ -107,10 +109,25 @@ sub parse_declaration_block {
     
     while ( $string =~ s{$splitter}{}sx ) {
         my %match = %+;
-        push @declarations, \%match;
+        my $found = 0;
+        
+        foreach my $property ( @PROPERTIES ) {
+            no strict 'refs';
+            
+            my $try_with = "CSS::Prepare::Property::${property}::parse";
+            my %parsed   = &$try_with( %match );
+            
+            if ( %parsed ) {
+                $found = 1;
+                %canonical = (
+                        %canonical,
+                        %parsed
+                    );
+            }
+        }
     }
     
-    return \@declarations;
+    return \%canonical;
 }
 
 1;
