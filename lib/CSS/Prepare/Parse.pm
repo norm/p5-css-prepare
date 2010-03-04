@@ -3,10 +3,11 @@ package CSS::Prepare::Parse;
 use Modern::Perl;
 
 use CSS::Prepare::Property::Border;
+use CSS::Prepare::Property::Color;
 use CSS::Prepare::Property::Margin;
 use CSS::Prepare::Property::Padding;
 
-my @PROPERTIES = qw( Border Margin Padding );
+my @PROPERTIES = qw( Border Color Margin Padding );
 
 
 
