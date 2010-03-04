@@ -23,12 +23,9 @@ CSS
     @structure = (
             {
                 selector => [ 'h1' ],
-                block => [
-                    {
-                        property => 'color',
-                        value    => 'red',
-                    },
-                ],
+                block => {
+                    'color' => 'red',
+                },
             },
         );
 
@@ -48,12 +45,9 @@ CSS
     @structure = (
             {
                 selector => [ 'h1' ],
-                block => [
-                    {
-                        property => 'color',
-                        value    => 'red',
-                    },
-                ],
+                block => {
+                    'color' => 'red',
+                },
             },
         );
 
@@ -75,34 +69,22 @@ CSS
     @structure = (
             {
                 selector => [ 'h1' ],
-                block => [
-                    {
-                        property => 'color',
-                        value    => 'red',
-                    },
-                ],
+                block => {
+                    'color' => 'red',
+                },
             },
             {
                 selector => [ '#header' ],
-                block => [
-                    {
-                        property => 'background',
-                        value    => '#fed',
-                    },
-                ],
+                block => {
+                    'background' => '#fed',
+                },
             },
             {
                 selector => [ 'p', 'li' ],
-                block => [
-                    {
-                        property => 'margin-top',
-                        value    => '5px',
-                    },
-                    {
-                        property => 'margin-bottom',
-                        value    => '5px',
-                    },
-                    ],
+                block => {
+                    'margin-top'    => '5px',
+                    'margin-bottom' => '5px',
+                },
             },
         );
 

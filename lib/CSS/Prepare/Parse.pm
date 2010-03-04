@@ -109,21 +109,35 @@ sub parse_declaration_block {
     
     while ( $string =~ s{$splitter}{}sx ) {
         my %match = %+;
-        my $found = 0;
+        my %parsed;
         
+        PROPERTY:
         foreach my $property ( @PROPERTIES ) {
-            no strict 'refs';
+            my $found = 0;
             
-            my $try_with = "CSS::Prepare::Property::${property}::parse";
-            my %parsed   = &$try_with( %match );
+            eval {
+                no strict 'refs';
+
+                my $try_with = "CSS::Prepare::Property::${property}::parse";
+                   %parsed   = &$try_with( %match );
+            };
             
             if ( %parsed ) {
-                $found = 1;
-                %canonical = (
-                        %canonical,
-                        %parsed
-                    );
+                last PROPERTY;
             }
+        }
+        
+        if ( %parsed ) {
+            %canonical = (
+                    %canonical,
+                    %parsed
+                );
+        }
+        else {
+            %canonical = (
+                    %canonical,
+                    $match{'property'} => $match{'value'},
+                );
         }
     }
     
