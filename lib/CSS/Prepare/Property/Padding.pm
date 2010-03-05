@@ -14,7 +14,7 @@ sub parse {
     
     given ( $property ) {
         when ( 'padding' ) {
-            %canonical = expand_tlbr_shorthand(
+            %canonical = expand_trbl_shorthand(
                     'padding-%s',
                     $value
                 );

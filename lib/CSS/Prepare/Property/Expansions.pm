@@ -4,11 +4,11 @@ use Modern::Perl;
 use Exporter;
 
 our @ISA    = qw( Exporter );
-our @EXPORT = qw( expand_tlbr_shorthand );
+our @EXPORT = qw( expand_trbl_shorthand );
 
 
 
-sub expand_tlbr_shorthand {
+sub expand_trbl_shorthand {
     my $pattern = shift;
     my $value   = shift;
     

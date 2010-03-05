@@ -14,7 +14,7 @@ sub parse {
     
     given ( $property ) {
         when ( 'margin' ) {
-            %canonical = expand_tlbr_shorthand(
+            %canonical = expand_trbl_shorthand(
                     'margin-%s',
                     $value
                 );

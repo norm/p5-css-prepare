@@ -16,7 +16,7 @@ sub parse {
     given ( $property ) {
         
         when ( 'border-width' ) {
-            %canonical = expand_tlbr_shorthand( 
+            %canonical = expand_trbl_shorthand(
                     'border-%s-width',
                     $value 
                 );
@@ -27,7 +27,7 @@ sub parse {
         when ( 'border-left-width' )   { $canonical{ $property } = $value; }
         
         when ( 'border-color' ) {
-            %canonical = expand_tlbr_shorthand( 
+            %canonical = expand_trbl_shorthand(
                     'border-%s-color',
                     $value 
                 );
@@ -38,7 +38,7 @@ sub parse {
         when ( 'border-left-color' )   { $canonical{ $property } = $value; }
         
         when ( 'border-style' ) {
-            %canonical = expand_tlbr_shorthand( 
+            %canonical = expand_trbl_shorthand(
                     'border-%s-style',
                     $value 
                 );
