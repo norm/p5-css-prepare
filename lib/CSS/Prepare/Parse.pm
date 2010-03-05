@@ -5,10 +5,11 @@ use Modern::Perl;
 use CSS::Prepare::Property::Background;
 use CSS::Prepare::Property::Border;
 use CSS::Prepare::Property::Color;
+use CSS::Prepare::Property::Font;
 use CSS::Prepare::Property::Margin;
 use CSS::Prepare::Property::Padding;
 
-my @PROPERTIES = qw( Background Border Color Margin Padding );
+my @PROPERTIES = qw( Background Border Color Font Margin Padding );
 
 
 
