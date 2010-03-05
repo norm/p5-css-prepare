@@ -8,8 +8,9 @@ use CSS::Prepare::Property::Color;
 use CSS::Prepare::Property::Font;
 use CSS::Prepare::Property::Margin;
 use CSS::Prepare::Property::Padding;
+use CSS::Prepare::Property::Text;
 
-my @PROPERTIES = qw( Background Border Color Font Margin Padding );
+my @PROPERTIES = qw( Background Border Color Font Margin Padding Text );
 
 
 
