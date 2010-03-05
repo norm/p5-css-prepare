@@ -1,10 +1,13 @@
-package CSS::Prepare::Property::Border;
+package CSS::Prepare::Property::Values;
 
 use Modern::Perl;
 use Exporter;
 
 our @ISA    = qw( Exporter );
-our @EXPORT = qw( is_style_value );
+our @EXPORT = qw(
+        is_style_value  is_colour_value     is_background_repeat_value
+        is_url_value    is_background_attachment_value
+    );
 
 
 
@@ -51,3 +54,40 @@ sub is_colour_value {
     
     return 0;
 }
+
+sub is_background_repeat_value {
+    my $value = shift;
+    
+    my @repeats = qw( repeat repeat-x repeat-y no-repeat );
+    
+    foreach my $repeat ( @repeats ) {
+        return 1
+            if $repeat eq $value;
+    }
+    
+    return 0;
+}
+
+sub is_url_value {
+    my $value = shift;
+    
+    return 1
+        if $value =~ m{^ url \( }x;
+    
+    return 0;
+}
+
+sub is_background_attachment_value {
+    my $value = shift;
+    
+    my @repeats = qw( scroll fixed );
+    
+    foreach my $repeat ( @repeats ) {
+        return 1
+            if $repeat eq $value;
+    }
+    
+    return 0;
+}
+
+1;
