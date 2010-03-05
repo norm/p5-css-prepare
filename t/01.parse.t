@@ -63,7 +63,7 @@ CSS
 {
     $css = <<CSS;
         h1 { color: red; }
-        #header { background: #fed; }
+        #header { font-size: 13px; }
         p, li { margin-top: 5px; margin-bottom: 5px; }
 CSS
     @structure = (
@@ -76,7 +76,7 @@ CSS
             {
                 selector => [ '#header' ],
                 block => {
-                    'background' => '#fed',
+                    'font-size' => '13px',
                 },
             },
             {
