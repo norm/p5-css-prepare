@@ -1,12 +1,8 @@
 p5-css-prepare
 ==============
 
-Perl 5 module for preprocessing CSS (normally as part of a deployment process).
+This repository has been retired (but not simply removed, so as not 
+to break links).
 
-Should:
-
-* optimise the file size by removing comments, redundant rules, unnecessary
-  whitespace and by rewriting the remaining code so that it takes the minimum
-  amount of bytes necessary.
-* concatenate multiple files safely
-* support some useful pre-processing declarations
+Please refer to
+[http://github.com/norm/CSS-Prepare/](http://github.com/norm/CSS-Prepare/).
