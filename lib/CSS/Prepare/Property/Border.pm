@@ -84,7 +84,7 @@ sub expand_border_shorthand {
     given ( $#values ) {
         when ( 0 ) {
             # this produces a border
-            if ( is_style_value( $value ) ) {
+            if ( is_border_style_value( $value ) ) {
                 $values{"border-${side}-width"} = '';
                 $values{"border-${side}-style"} = $value;
                 $values{"border-${side}-color"} = '';
@@ -104,12 +104,12 @@ sub expand_border_shorthand {
             }
         }
         when ( 1 ) {
-            my $property1 = is_style_value( $values[0] )  ? 'style'
-                          : is_colour_value( $values[0] ) ? 'color'
-                                                          : 'width';
-            my $property2 = is_style_value( $values[1] )  ? 'style'
-                          : is_colour_value( $values[1] ) ? 'color'
-                                                          : 'width';
+            my $property1 = is_border_style_value( $values[0] ) ? 'style'
+                          : is_colour_value( $values[0] )       ? 'color'
+                                                                : 'width';
+            my $property2 = is_border_style_value( $values[1] ) ? 'style'
+                          : is_colour_value( $values[1] )       ? 'color'
+                                                                : 'width';
             my $property3 
                 = ('style' ne $property1 && 'style' ne $property2) ? 'style'
                 : ('color' ne $property1 && 'color' ne $property2) ? 'color'
